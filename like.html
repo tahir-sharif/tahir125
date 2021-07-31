@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <link rel="shortcut icon" href="icon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+    <title>Like & Dislike</title>
+</head>
+<body>
+    <div class="likeContainer" style="text-align: center;">
+        <h2>Like & Dislike</h2>
+        <div style="position: relative;" class="relative">
+            <div class="abbrr">9600 / 2500</div>
+            <div class="width"></div>
+            <div class="useLess"></div>
+            <div class="likeCont">
+                
+            <div class="like" onclick="doLike()">
+            <abbr title="1000" class="abbr">
+                <i class="fas fa-thumbs-up"></i> 
+            <span class="likeCount">0</span>
+            </abbr>
+            </div>
+
+            <div class="dislike" onclick="doDislike()">
+                <abbr title="1000" class="abbr">
+                <span class="dislikeCount">0</span>
+                <i class="fas fa-thumbs-down"></i>
+            </abbr>
+            </div>
+        </div>
+        <div class="UserForm">
+            <div class="msg" style="text-decoration: underline; cursor: pointer;"><p>Enter a Custom likes</p></div>
+            <div class="form hide">
+                <input type="number" placeholder="Enter Likes " id="userLike">
+                <input type="number" placeholder="Enter Dislikes" id="userdislike">
+                <button id="close">Close</button>
+                <button id="done">Okay !</button>
+            </div>
+        </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

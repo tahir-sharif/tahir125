@@ -1,222 +1,133 @@
-var likeContainer = document.querySelector('.likeCont');
-var like = document.querySelector('.like');
-var dislike = document.querySelector('.dislike');
-var width = document.querySelector('.width');
-width.classList.add('NotColoredWidth');
-// width.style.backgroundColor = 'grey';
+// Objects Assigment
+// Number 01:
 
-var likeCount = document.querySelector('.likeCount');
-var dislikeCount = document.querySelector('.dislikeCount');
-var abbr = document.querySelector('.abbrr');
+var itemsArray = [
+    {
+        name:'Juice',
+        price:'50',
+        quantity:'3'
+    },
+    {
+        name:'Cookie',
+        price:'30',
+        quantity:'9'
+    },
+    {
+        name:'Shirt',
+        price:'880',
+        quantity:'1'
+    },
+    {
+        name:'Pen',
+        price:'100',
+        quantity:'2'
+    }
+];
 
-likes = 0;
-dislikes = 0;
-abbr.innerHTML = likes + ' / ' + dislikes;
+var outName = document.querySelector('.nm');
+var outPrice = document.querySelector('.pr');
+var outQuantity = document.querySelector('.qnt');
+var outTotal = document.querySelector('.tot');
 
-likeCount.innerHTML =valueConvertor(likes);
-dislikeCount.innerHTML =valueConvertor(dislikes);
-widthChanger()
+function calculatePrice(value){
+    outName.innerHTML = itemsArray[value].name;
+    outPrice.innerHTML = itemsArray[value].price;
+    outQuantity.innerHTML = itemsArray[value].quantity;
+    outTotal.innerHTML = itemsArray[value].price * itemsArray[value].quantity;
+}
+calculatePrice(0);
 
+// Number 02:
 
-document.querySelectorAll('.abbr')[0].title = 'I like this'
-document.querySelectorAll('.abbr')[1].title = 'I Dislike this'
+var obj = {
+    name : '',
+    email : '',
+    password : '',
+    age : '',
+    gender : '',
+    city : '',
+    country : ''
+}
 
-function doLike(){
+document.querySelector('.srchBtn').addEventListener('click' , function(){
 
-    like.classList.add('colored');
-    dislike.classList.remove('colored');
-    document.querySelector('.likeCont').classList.add('border');
+var searchWord = document.querySelector('.search').value.toLocaleLowerCase();
+var outputTxt = document.querySelector('.outputTxt');
+
+if(searchWord != ""){
        
-    likes = likes + 1;
-    likeCount.innerHTML =valueConvertor(likes);
-    abbr.innerHTML = likes + ' / ' + dislikes;
+    if(obj[searchWord] != undefined){
+        outputTxt.innerHTML = searchWord + ' is Available'
+    }else{
+        outputTxt.innerHTML = searchWord + ' is Not Available'
+    }
 
-
-    width.classList.replace('NotColoredWidth' , 'coloredWidth');
-    widthChanger()
-
+}else{
+    alert('Enter a Word !')
 }
-
-function doDislike(){
-    
-    dislike.classList.add('colored');
-    like.classList.remove('colored');
-    document.querySelector('.likeCont').classList.add('border');
-
-    
-    
-    dislikes = dislikes + 1;
-    dislikeCount.innerHTML =valueConvertor(dislikes);
-    abbr.innerHTML = likes + ' / ' + dislikes;
-    
-    width.classList.replace('NotColoredWidth' , 'coloredWidth');
-    widthChanger()
-}
-
-function widthChanger(){
-    calculateWidth = likes + dislikes;
-    calculateWidth = likes / calculateWidth;
-    calculateWidth *= 100;
-    width.style.width = calculateWidth + '%'
-}
-// For Abbrevation of views
-var useLess = document.querySelector('.useLess');
-useLess.addEventListener('mouseover' , function() {
-    setTimeout(() => {
-        abbr.style.opacity = '1'  
-    }, 500);
-})
-useLess.addEventListener('mouseleave' , function() {
-    setTimeout(() => {
-        abbr.style.opacity = '0'   
-    }, 500);
-})
-// Value Convertor
-function valueConvertor(value){
-    converted = value.toString();
-
-    if(value >= 1000000000000){
-        converted = converted.slice(0,1) + 'T'
-        alert('Maximum Limit have reached')
-        return converted;
-    }
-    // for B with more values
-    if(value >= 100000000000){
-        converted = converted.slice(0,3) + 'B'
-        return converted;
-    }
-    else if(value >= 10000000000){
-        if(converted.slice(2 , 3) == '0'){
-        converted = converted.slice(0 , 2) + 'B'
-        return converted;
-        }
-        converted = converted.slice(0 , 2) + '.' + converted.slice(2 , 3) + 'B'
-        return converted;
-    }
-    // for B with more values
-    if(value >= 1100000000){
-        if(converted.slice(1,2) == '0'){
-        converted = converted.slice(0,1) + 'B'
-        return converted;
-        }
-        converted = converted.slice(0,1) + '.' + converted.slice(1,2) + 'B'
-        return converted;
-    }
-    // for B
-    else if(value >= 1000000000){
-        converted = converted.slice(0,1) + 'B'
-        return converted
-    }
-
-    // for M with more values
-    else if(value >= 100000000){
-        converted = converted.slice(0 , 3) + 'M'
-        return converted;
-    }
-
-    // for M with more values
-    else if(value >= 10000000){
-        if(converted.slice(2 , 3) == '0'){
-        converted = converted.slice(0 , 2) + 'M'
-        return converted;
-        }
-        converted = converted.slice(0 , 2) + '.' + converted.slice(2 , 3) + 'M'
-        return converted;
-    }
-    
-    // for M
-    else if(value >= 1100000){
-        if(converted.slice(1,2) == '0'){
-        converted = converted.slice(0 , 1) + 'M'
-        return converted;
-        }
-        converted = converted.slice(0 , 1) + '.' + converted.slice(1,2) + 'M'
-        return converted;
-
-    }
-    else if(value >= 1000000){
-        converted = converted.slice(0 , 1) + 'M'
-        return converted;
-
-    }
-    // for k with more values
-    else if(value >= 100000){
-            converted = converted.slice(0 , 3) + 'k'
-            return converted;
-
-    }
-    // for k with more values
-    else if(value >= 10000){
-        if(converted.slice(2 , 3) == '0'){
-            converted = converted.slice(0 , 2) + 'k'
-            return converted;
-        }
-        converted = converted.slice(0 , 2) + '.' + converted.slice(2 , 3) + 'k'
-        return converted;
-
-    }
-    // for k with point
-    else if(value >= 1100){
-        if(converted.slice(1 , 2) == '0'){
-            converted = converted.slice(0 , 1) + 'k'
-            return converted;
-        }
-        converted = converted.slice(0 , 1) + '.' + converted.slice(1 , 2) + 'k'
-        return converted;
-
-    }
-    // for K
-    else if(value >= 1000){
-        converted = converted.slice(0 , 1) + 'k'
-        return converted;
-
-    }
-    else{
-        return value;
-    }
-}
-
-// User Form
-var form = document.querySelector('.form');
-var msg = document.querySelector('.msg');
-var cancel = document.getElementById('close')
-var userLike = document.getElementById('userLike');
-var userdislike = document.getElementById('userdislike');
-
-msg.addEventListener('click' , function(){
-    msg.classList.toggle('hide');
-    form.classList.toggle('hide');
-})
-cancel.addEventListener('click' , function(){
-    msg.classList.toggle('hide');
-    form.classList.toggle('hide');
 })
 
-document.getElementById('done').addEventListener('click' , function(){User()})
-function User(){
-    var userLike = +(document.getElementById('userLike').value);
-    var userdislike = +(document.getElementById('userdislike').value);
+// Number 03:
 
-    userLike = Math.floor(userLike);
-    userdislike = Math.floor(userdislike);
+function Record(name , email , age , city){
+    this.name = name;
+    this.email = email;
+    this.age = age;
+    this.city = city;
+}
+var record1 = new Record('Tahir' , 'hjdbh@gmail.com' , '17' , 'Karachi');
+var record2 = new Record('Usama' , 'usjns@gmail.com' , '23' , 'Islamabad');
+var record3 = new Record('Faisal' , 'faskls@gmail.com' , '19' , 'Lahore');
 
-    if(userdislike == '0'&& userdislike > -1){
-        dislikes =  - 1;
-        doDislike()
-    }
-    else if(userdislike != '' && userdislike != NaN && userdislike > 0){
-        dislikes = userdislike - 1;
-        doDislike()
-    }
-    if(userLike == '0'&& userLike > -1){
-        likes =  - 1;
-        doLike()
-    }
-    else if(userLike != '' && userdislike != NaN  && userLike > 0){
-         likes = userLike - 1;
-         doLike()
-    }
-    widthChanger();
+var output1 = "";
+for (var property in record1) {
+  output1 += property + ': ' + record1[property]+'; ';
+}
+var output2 = "";
+for (var property in record2) {
+    output2 += property + ': ' + record2[property]+'; ';
+}
+var output3 = "";
+for (var property in record3) {
+    output3 += property + ': ' + record3[property]+'; ';
+}
 
+obj1.innerHTML = output1;
+obj2.innerHTML = output2;
+obj3.innerHTML = output3;
+
+// Number 04:
+
+function info(name , gender , address , education , profession){
+    this.name = name;
+    this.gender = gender;
+    this.address = address;
+    this.education = education;
+    this.profession = profession;
+}
+
+var population = [];
+function save(){
+
+var name = document.querySelector('.name').value;
+var address = document.querySelector('.address').value;
+var gender = document.querySelectorAll('.gender');
+var education = document.querySelector('.education').value;
+var profession = document.querySelector('.profession').value;
+
+
+if(gender[0].checked){
+    gender = 'male'
+}else if(gender[1].checked){
+    gender = 'female'
+}
+
+    record = new info(name , gender , address ,  education , profession)
+    population.push(record);
+    console.log(population);
 
 }
+document.querySelector('.save').addEventListener('click' , function(){
+    save();
+    document.getElementById('msg').innerHTML = 'Saved ! Check it in Console.'
+})

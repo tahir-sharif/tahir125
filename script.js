@@ -437,11 +437,9 @@ function commaToArr(membersArr){
 }
 
 function returnMembersCount(membersArr) {
-
-        // According to conditions , write English !
-        if(membersArr.length<1){
-            membersVal = membersArr[0]
-        }
+    
+    // According to conditions , write English !
+    
         if(membersArr.length<2){
             membersVal = membersArr[0]
         }
@@ -453,7 +451,10 @@ function returnMembersCount(membersArr) {
         }
         else if(membersArr.length<=4){
             membersVal = membersArr[0] + ' , ' + membersArr[1] + ' , ' + membersArr[2] + ' & '+ (membersArr.length-3)+ ' other'
-        }else{
+        }else if(membersArr.length == undefined){
+            membersVal = 'This team has no members'
+        }
+        else{
             membersVal = membersArr[0] + ' , ' + membersArr[1] + ' , ' + membersArr[2] + ' & '+ (membersArr.length-3)+ ' others'
         };
         return membersVal

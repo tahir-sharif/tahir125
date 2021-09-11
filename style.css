@@ -1,0 +1,624 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior:smooth;
+}
+body{
+    background-color: #cacaca;
+    font-family: sans-serif;
+}
+::-webkit-scrollbar-track {
+    background-color: transparent;
+} 
+::-webkit-scrollbar {
+    width: 8px;
+    background-color: transparent;
+}
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: rgb(27, 120, 136);
+}
+::-webkit-scrollbar-thumb:hover {
+    background-color: rgb(8, 99, 116);
+}
+.fix {
+    width: 100%;
+    height: 100vh;
+    background-color: black;
+    background-color: #101010;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.fix .net{
+     font-size: 25px;
+}
+.fix .ntBtn {
+    margin-top: 35px;
+    text-align: center;
+    background-color: transparent;
+    border: solid 1px rgb(118, 0 ,216);
+    color: rgb(139, 0, 255);
+}
+.fix .ntBtn:hover{
+    background-color: rgba(119, 0, 216, 0.116);
+}
+.fix .backOnline{
+    position: fixed;
+    top: 0%;
+    width: 100%;
+    height: 20px;
+    text-align: center;
+    background-color: rgb(33, 199, 74);
+    font-weight: 600;
+}
+.notLoad {
+    font-size: 18px;
+}
+.container{
+    min-height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.inputForm {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.349);
+    background-color: white;
+    padding: 35px 25px;
+    animation: name duration timing-function delay iteration-count direction fill-mode;
+}
+.container .errMsg , .errMsgT {
+    color: red;
+    margin: 3px 0;
+}
+.container h2 {
+    margin-bottom: 10px;
+    color: rgb(121, 121, 121);
+}
+.loginForm , .registorForm{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+.loginForm{
+    display: none;
+}
+.inputForm input::placeholder{
+    color: rgba(0, 0, 0, 0.349);
+}
+.inputForm input {
+    width: 275px;
+    padding: 5px;
+    margin: 10px 0;
+    border: none;
+    outline: none;
+    border-bottom: solid 2px rgba(153, 153, 153, 0.685);
+    font-size: 18px;
+    color: #000000c7;
+    transition: .2s;
+}
+.inputForm input:focus {
+    border-color:rgb(72, 141, 221);
+}
+.btn {
+    width: 100px;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+    padding: 7px 10px;
+    font-size: 18px;
+    background-color: rgb(73, 166, 219);
+    color: white;
+    margin-top: 15px;
+    cursor: pointer;
+    transition: .3s;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.157);
+    text-align: center;
+}
+.btn:hover{
+    background-color: rgb(62, 143, 190);
+    letter-spacing: 1px;
+    opacity: 1;
+}
+.btn:active{
+    background-color: rgb(54, 115, 151);
+    transition: .2s;
+    opacity: .5;
+    transform: scale(.95);
+
+}
+.inputForm .link {
+    text-decoration: none;
+    margin-top: 20px;
+    color: #0d2fbb;
+    cursor: pointer;
+    transition: 0.5s;
+}
+.inputForm .link:hover {
+    text-decoration: underline;
+    letter-spacing: 1px;
+}
+
+.mainPage{
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.mainPage .acntBox {
+    position: fixed;
+    top: 30px;
+    right: 40px;
+    box-shadow: 0 0 10px #0c0c0c38;
+    color: white;
+    font-size: 18px;
+    background-color: rgb(74, 187, 216);
+    cursor: pointer;
+    border-radius: 50%;
+    z-index: 10;
+    user-select: none;
+}
+.acntBtn{
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.mainPage .acntOverlay {
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.329);
+    position: fixed;
+    z-index: 5;
+    display: none;
+}
+.acntInfo {
+    position: absolute;
+    background-color: rgb(74, 187, 216);
+    right: 0px;
+    top: 20px;
+    width: auto;
+    min-height: 80px;
+    box-shadow: 0 0 10px #0c0c0c38;
+    min-width: 200px;
+    display: none;
+    border-radius: 5px;
+}
+.acntInfo p , .acntInfo h3{
+    padding: 8px 10px;
+    margin: 8px 10px;
+    border-radius: 5px;
+    text-shadow: 0 0 3px rgba(0, 0, 0, 0.157);
+    background-color: rgba(49, 132, 153, 0.466);
+}
+.acntInfo h3{
+    margin-bottom: 10px;
+    text-align: center;
+}
+.displayToggle{
+    display: block !important;
+}
+.mainPage .teams {
+    width: 80%;
+    height: 700px;
+    max-width: 550px;
+    min-width: 350px;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 8px 15px 34px #0000004a;
+    overflow: hidden;
+    position: relative;
+}
+.addBtn {
+    position: absolute;
+    top: 87%;
+    right: 4%;
+    box-shadow: 0 0 11px #0000007a;
+    border-radius: 50%;
+    width: 40px;
+    font-size: 25px;
+    text-align: center;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 35px;
+    user-select: none;
+    letter-spacing: 0px;
+    opacity: 0.65 ;
+}
+.teams .teamHeadingTxt{
+    font-size: 22px;
+    font-weight: 600;
+    text-align: center;
+    width: 100%;
+    margin-top: 8px;
+    position: relative;
+}
+.teamsContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    height: 95%;
+    overflow: hidden;
+    padding: 15px;
+}
+.AllteamsContainer , .memberView{
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+    overflow-x: hidden;
+    animation: opacity .3s;
+}
+.AllteamsContainer .teamTypeHeading {
+    text-align: left;
+    font-weight: 600;
+    font-size: 25px;
+    margin: 17px 0;
+}
+.AllteamsContainer hr {
+    width: 90%;
+    margin: 0 auto;
+}
+.teamBoxContainer {
+    margin: 10px;
+    border: 1px black;
+}
+.teamBox {
+    width: 100%;
+    min-height: 100px;
+    border: 2px solid rgb(144, 144, 144);
+    margin: 18px 0;
+    border-radius: 5px;
+    padding:10px 15px;
+    transition: .5s;
+}
+.notYet{
+    color: black;
+    text-align: center;
+    font-weight: 600;
+}
+.mnTeamsBox {
+    min-height: 240px;
+}
+.mnTeams {
+    border-left: 6px solid #49a6db;
+    padding: 0 8px;
+    cursor: pointer;
+}
+.teamBoxHighlight{
+    background-color: rgb(92, 190, 194);
+    border-color: rgb(92, 190, 194);
+}
+.teamBox h2{
+    color: rgb(95, 95, 95)
+}
+.members{
+    color: rgb(51, 107, 14);
+}
+.teamBox span{
+    font-weight: 600;
+}
+.teamBox p {
+    margin-top: 15px;
+}
+.createNewTeamBoxBack{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    bottom: 0;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.596);
+    backdrop-filter: blur(2px);
+    animation: showBackground .2s;
+}
+@keyframes showBackground {
+    0%{
+        opacity: 0;
+    }100%{
+        opacity: 1;
+    }
+}
+.createNewTeamBox {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 350px;
+    height: 350px;
+    background-color: white;
+    box-shadow: 0 0 12px #00000040;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    animation: leftToCenter .4s;
+}
+@keyframes leftToCenter {
+    0%{
+        left: -100%;
+    }
+    40%{
+        left: 35%;
+    }
+    60%{
+        left: 55%;
+    }
+    100%{
+        left: 50%;
+    }
+}
+.createNewTeamBox input , select{
+    width: 90%;
+    font-size: 20px;
+    margin: 15px 0;
+    padding: 5px;
+    outline: none;
+    border: none;
+    border-bottom: 2px solid rgb(175, 174, 174);
+    transition: .2s;
+}
+.createNewTeamBox select{
+    border: 2px solid rgb(175, 174, 174);
+    color: rgba(0, 0, 0, 0.637);
+    font-size: 18px;
+}
+.createNewTeamBox input::placeholder{
+    color: rgba(0, 0, 0, 0.637);
+}
+.createNewTeamBox input:focus{
+    border-color:rgb(72, 141, 221);
+}
+.btnGrp {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-top: 15px;
+}
+.ownerView {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    animation: opacity .3s;
+}
+@keyframes opacity {
+    0%{
+        transform: scale(1.05);
+        opacity: 0.2;
+    }
+}
+.ownerView .ownerHead {
+    width: 100%;
+    height: 8%;
+    border-top: 2px solid rgb(0 0 0 / 4%);
+    border-bottom: 2px solid rgb(0 0 0 / 4%);
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+}
+.Ownerheadings {
+    width: 260px;
+    font-size: 18px;
+    font-weight: 600;
+}
+.Ownerheadings .heading {
+    display: inline-block;
+    padding: 10px 5px;
+    margin: 0 8px;
+    border-bottom: solid 2px transparent;
+    cursor: pointer;
+}
+.active{
+    border-color: red !important;
+}
+.page {
+    width: 100%;
+    height: 92%;
+    overflow: auto;
+    margin-top: 10px;
+}
+.settingsPage{
+    width: 100%;
+    height: 81%;
+    overflow: auto;
+    margin-top: 10px;
+}
+.halfPage {
+    width: 100%;
+    min-height: 20%;
+    padding: 8px;
+}
+.halfPageChild {
+    width: 100%;
+    margin: 12px auto;
+    width: 80%;
+}
+.questions input , .addMembersForm input{
+    width: 100%;
+    outline: none;
+    border: none;
+    border-bottom: 2px solid rgba(0,0,0,0.3);
+    font-size: 16px;
+    margin: 10px 0;
+    padding-bottom: 10px;
+    padding-left: 5px;
+}
+.addMembersForm input:focus , .questions input:focus{
+    border-color: rgb(73, 166, 219);
+}
+.viewMembers {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    transition: .4s ;
+}
+.ownerMembers .errMsg{
+    text-align: center;
+}
+.ownerMembers .viewMembers .vm{
+    position: relative;
+    display: inline-block;
+    color: rgb(58, 58, 58);
+    background-color: rgb(228, 228, 228);
+    padding: 10px;
+    border-radius: 150px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: .3s;
+    margin: 5px 3px;
+}
+.ownerMembers .viewMembers .vm:hover{
+    background-color: rgb(211, 211, 211);
+}
+.vm .x{
+    background-color:rgb(122, 122, 122);
+    color: rgb(214, 214, 214);
+    border-radius: 10px;
+    padding: 0 5px;
+    margin-left: 4px;
+}
+.vm .x:hover{
+    background-color:rgb(102, 102, 102);
+    color: rgb(223, 223, 223);
+}
+.addMembersForm {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 40px;
+}
+.addMembersForm input{
+    width: 70%;
+    font-size: 18px;
+}
+.hdn{
+    display: none !important;
+}
+.mnSettingBtns {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: absolute;
+    bottom: 8px;
+}
+.mnSettingBtns .btn {
+    letter-spacing: 0px;
+    font-size: 17px;
+    width: auto;
+}
+.mnSettingBtns .saveCancelBtn {
+    width: 48%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 28px;
+}
+/* Members */
+.membersFormContainer {
+    min-height: auto;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    padding-left: 41px;
+    margin-top: 54px;
+}
+.memberView .membersForm {
+    width: 100%;
+    min-height: 350px;
+}
+.memberView h2{
+    color: rgb(92, 92, 92);
+}
+.memberView h2 i{
+    margin-right: 10px;
+    cursor: pointer;
+}
+.memberView h2 .membersDate{
+    color: black;
+    font-weight: 600;
+    text-decoration: underline;
+}
+.answerField {
+    display: inline-block;
+    min-width: 350px;
+    transition: .2s;
+    font-size: 20px;
+    margin: 12px 0;
+}
+.answerField input {
+    border: none;
+    outline: none;
+    width: 100%;
+    border-bottom: 2px solid grey;
+    font-size: 18px;
+    margin: 9px 0px;
+    padding-bottom: 3px;
+    padding-left: 5px;
+}
+.answerField input:focus{
+    border-color: rgb(73, 166, 219);
+}
+.reportsPage{
+    padding: 10px;
+}
+.reportsAns {
+    margin: 11px;
+}
+.reportName {
+    margin: 12px 0px;
+}
+.reportsPage .reportsAns p {
+    font-size: 19px;
+    line-height: 28px;
+    margin-left: 30px;
+}
+p.AR {
+    margin-bottom: 8px;
+}
+
+
+
+
+@media only screen and (max-width : 520px) {
+    .addMembersForm input {
+        width: 62%;
+        font-size: 18px;
+    }
+    .mnSettingBtns .saveCancelBtn {
+        width: 56%;
+        margin-left: 5px;
+    }
+    .mnSettingBtns .btn {
+        padding: 9px 6px;
+        font-size: 14px;
+    }
+}
+@media only screen and (max-width:600px) {
+    .mnSettingBtns .saveCancelBtn {
+        width: 54%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-left: 10px;
+    } 
+}

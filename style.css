@@ -621,4 +621,13 @@ p.AR {
         align-items: center;
         margin-left: 10px;
     } 
+    .mnTeamsBox {
+        min-height: 200px;
+    }
+    .mainPage .teams {
+        height: 640px;
+    }
+    .AllteamsContainer .teamTypeHeading {
+        font-size: 22px;
+    }
 }

@@ -181,7 +181,6 @@ function showCreateTeamBox () {
     newTeamBox.style.display = 'flex';
     teamBoxBg.style.display = 'block'
     addBtn.style.display = 'none';
-    teamsContainer.style.overflow = 'hidden';
     teamsContainer.style.scrollBehavior = 'unset'
     teamsContainer.scroll(0 , 0);
     teamsContainer.style.scrollBehavior = 'smooth'
@@ -191,7 +190,6 @@ function hideTeamBox() {
     newTeamBox.style.display = 'none';
     addBtn.style.display = 'flex';
     teamBoxBg.style.display = 'none'
-    teamsContainer.style.overflow = 'auto'
     // Empty Field box
     inputTeamName.value = "";
     members.value = "";
@@ -674,11 +672,14 @@ function teamQuestions(teamIndex){
     reportQuestionAll = document.querySelectorAll('.reportQuestion');
 
     questions = [];
+    if(question1.value != "" && question2.value != "" && question3.value != ""){
 
-    questions.push(question1.value);
-    questions.push(question2.value);  
-    questions.push(question3.value);
-    questions.push(new Date().toDateString());
+        questions.push(question1.value);
+        questions.push(question2.value);  
+        questions.push(question3.value);
+        questions.push(new Date().toDateString());
+        
+    };
 
     
     

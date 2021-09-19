@@ -4,189 +4,74 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meeting</title>
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
-    <link rel="stylesheet" href="style.css">
-    <link rel="shortcut icon" href="tick.ico" type="image/x-icon">
+    <link rel="stylesheet" href="./style.css">
+    <title>Pop the Ballon Game</title>
 </head>
 <body>
-    <!-- NetWork Connection check -->
-    <div class="fix" style="display: none;">
-        <span class="backOnline" style="display: none;">
-            Back Online
-        </span>
-        <span class="net">
-            Connect to the Internet
-        </span>
-        <span class="btn ntBtn" onclick="netCheck()">
-            Try Again
-        </span>
-    </div>
-    <div class="AllContainer">
+
     <div class="container">
-        <!-- Login and Registor Form -->
+
+        <!-- <div class="loader">
+            <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+        </div> -->
+        
         <div class="inputForm" style="display: none;">
-            <h2 class="inputHeading" >Login / Registor</h2>
+            <h2 class="formHeding">Login</h2>
             <div class="errMsg">&nbsp;</div>
-            <div class="registorForm">
-                <input class="userName" type="text" placeholder="Full name" spellcheck="false">
-                <input class="regEmail" type="email" placeholder="Email address" spellcheck="false">
-                <input class="regPass" type="password" placeholder="Password" spellcheck="false">
-                <button class="signupBtn btn">Sign up</button>
-                <span class="link" tabindex="0">Already have an account</span>
+            <div class="loginForm formDiv">
+                <input type="email" class="email" placeholder="Email address" spellcheck="false" >
+                <input type="password" class="password" placeholder="Password" spellcheck="false" >
+                <div class="btn loginBtn" onclick="login()">Login</div>
+                <div class="acntTxt" onclick="showRegForm()">Don't have an account</div>
             </div>
-            <div class="loginForm">
-                <input class="email" type="email" placeholder="Email address" spellcheck="false">
-                <input class="password" type="password" placeholder="Password" spellcheck="false">
-                <button class="loginBtn btn" onclick="logIn()">Log in</button>
-                <span class="link" tabindex="0">Don't have an account</span>
+            <div class="regForm formDiv" style="display: none;">
+                <!-- <h2>Registor</h2> -->
+                <input type="text" class="name" placeholder="Your name" spellcheck="false" >
+                <input type="email" class="regEmail" placeholder="Email address" spellcheck="false" >
+                <input type="password" class="regPass" placeholder="Password" spellcheck="false" >
+                <div class="btn signupBtn" onclick="signup()">Signup</div>
+                <div class="acntTxt" onclick="showLoginForm()">Already have an account</div>
             </div>
         </div>
 
-        <!-- Team Page (show after login) -->
-
-        <div class="mainPage" style="display: none;">
-
-            <div class="acntOverlay"></div>
-            <div class="acntBox">
-
-                <span class="acntBtn"></span>
-                <div style="position: relative;">
-                    <div class="acntInfo">
-                        <h3>Account Info</h3>
-                        <p class="accntName">Tahir Shareef</p>
-                        <p class="accntEmail">tahirtv.islam@gmail.com</p>
-                        <p onclick="logout()"><i class="fas fa-arrow-left"></i> Logout</p>
-                    </div>                
-                </div>
-            </div>
-
-            <div class="teams">
-                <div class="teamHeadingTxt"></div>
-                <div class="teamsContainer">
-                    <div class="hdn AllteamsContainer">
-
-                        <!-- + button -->
-                        <div class="addBtn btn"><span>+</span></div>
-
-                        <!-- Team Owns -->
-                        <div class="teamBoxContainer teamOwnerBox">
-                            <div class="teamTypeHeading">Teams You Own<span class="ownerCount"></span></div>
-
-                            <div class="mnTeamsBox">
-                                <div class="mnTeams">
-                                    <!-- <div class="teamBox">
-                                    <h2>Developers</h2>
-                                    <p><span>Members : </span> Haris , Arshad & 1 Other </p>
-                                </div> -->
-                            </div>
-
-                            </div>
-                        </div>
-<hr>
-                        <!-- Team Part -->
-                        <div class="teamBoxContainer teamPartBox">
-                            <div class="teamTypeHeading">Teams You are a part Of<span class="partCount"></span></div>
-                            <div class="mnTeamsBox">
-                                <div class="mnTeams">
-                                    <!-- <div class="teamBox">
-                                    <h2>Developers</h2>
-                                    <p><span>Members : </span> Haris , Arshad & 1 Other </p>
-                                </div> -->
-                            </div>
-                        </div>
-
-                        <!-- Create New Team Form -->
-                        <div onclick="hideTeamBox()" class="createNewTeamBoxBack" style="display: none;"></div>
-                        <div class="createNewTeamBox" style="display: none;">
-                            <h2>Create New Team</h2>
-                            <p class="errMsgT">&nbsp;</p>
-                            <input class="teamName" type="text" placeholder="Team Name">
-                            <select class="teamCategory">
-                                <option value="Category">Category</option>
-                                <option value="Developers">Developers</option>
-                                <option value="Maintenance">Maintenance</option>
-                                <option value="Leads">Leads</option>
-                                <option value="Architects">Architects</option>
-                            </select>
-                            <input class="members" type="text" placeholder="Members (type email)">
-                            <div class="btnGrp">
-                                <button class="btn createTeamBtn">Create</button>
-                                <button class="btn cancelCreateTeam" style="background-color: rgb(255 144 5);">Cancel</button>
-                            </div>
-                        </div>
-
+        <div class="mnPage">
+            <h1 class="wlcome">Welcome</h1>
+            <div class="gameContainer">
+                <div class="balloonsContainer">
+                    <h1 class="lives">Lives : 3</h1>
+                    <div><h2 class="lvl">Level 1</h2></div>
+                    <h1 class="popClrBln" ></h1>
+                    <div class="mnBalloons">
+                        <div class="balloon black" id="black" onmouseover="blns(this.id , event)"><span></span></div>
+                        <div class="balloon blue" id="blue" onmouseover="blns(this.id , event)"><span></span></div>
+                        <div class="balloon red"  id="red" onmouseover="blns(this.id , event)"><span></span></div>
+                        <div class="balloon yellow" id="yellow" onmouseover="blns(this.id , event)"><span></span></div>
+                        <div class="balloon green" id="green" onmouseover="blns(this.id , event)"><span></span></div>
+                        
                     </div>
-                </div>
-                <div class="hdn ownerView">
-                    <div class="ownerHead">
-                        <div class="Ownerheadings">
-                            <i style="cursor: pointer;" class="fas fa-arrow-left" onclick="showTeamsPage()"> &nbsp; </i>
-                            <div class="heading heading1">Reports</div>
-                            <div class="heading heading2 active">Settings</div>
+                    <div class="ntHover" style="display: none;"></div>
+                    <div class="gamePopUp" style="display: none; text-align: center;">
+                        <div class="gameOver">
+                            <h2>Game Over </h2>
+                            <div class="btn gmPopBtn" onclick="playAgain()">Try again</div>
                         </div>
-                    </div>
-                        <div class="reportsPage page hdn">
-                            <div class="reportsAns">
-                                <p class="reportName">df</p>
-                                <p class="QR" >Q. <span class="reportQuestion"></span></p>
-                                <p class="AR" >Ans. <span class="ans1">vxcv</span></p>
-                                <p class="QR" >Q. <span class="reportQuestion"></span></p>
-                                <p class="AR" >Ans. <span class="ans2">vxcvfd</span></p>
-                                <p class="QR" >Q. <span class="reportQuestion">vdfg</span></p>
-                                <p class="AR" >Ans. <span class="ans3">gfdgdfg</span></p>
-                            </div></br>
+                        <div class="gameWin">
+                            <h2>You Win</h2>
+                            <div class="btn gmPopBtn" onclick="changeLevel()">Next Level</div>
                         </div>
-                        <div class="settingsPage page">
-                            <div class="quetionsForm">
-                                <div class="ownerQuestions halfPage">
-                                    <h2>Questions :</h2>
-                                    <div class="questions halfPageChild">
-                                        <input type="text" class="question" placeholder="your Question">
-                                        <input type="text" class="question" placeholder="your Question">
-                                        <input type="text" class="question" placeholder="your Question">
-                                    </div>
-                                </div>
-                            </div>
-                                <div class="ownerMembers halfPage">
-                                    <h2>Members :</h2><h4 class="errMsg3 errMsg">&nbsp;</h4>
-                                    <div class="viewMembers halfPageChild">
-                                    </div>
-                                    <div class="addMembers">
-                                        <div class="addMembersForm">
-                                            <input class="addMmbr" type="text" placeholder="Add Member">
-                                            <span class="btn addMmbrBtn">Add <i class="fas fa-user-plus"></i></span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="mnSettingBtns">
-                                    <div class="saveCancelBtn">
-                                        <div class="btn saveChanges">Save Changes</div>
-                                        <div class="btn cancelChanges" style="    background: white; box-shadow: 0 0 9px #0000003b;color: #777777;">Cancel</div>
-                                    </div>
-                                    <div class="btn dltTeam" style="background-color: #de4204;"><i class="fas fa-trash-alt"></i> Delete Team</div>
-                                </div>
-                        </div>
-                </div>
-                <div class="memberView page">
-                    <h2><i class="fas fa-arrow-left" onclick="showTeamsPage()"></i>  Filling For : <span class="membersDate">16 August 2021</span></h2>
-                    <div class="membersFormContainer">
-                        <div class="membersForm">
-                            <!-- <div class="answerField">
-                                <p>Q. <span class="mnQuestion" >What Will You Do Today ?</span> </p>
-                                <input type="text" class="ans" placeholder="Answer">
-                            </div> -->
-                            <div class="noQuestions">
-                                No quetions Yet
-                            </div>
-                        </div>
-                        <div class="btn ansSubmit">Submit</div>
                     </div>
                 </div>
             </div>
         </div>
+
     </div>
-</div>
-    <script src="script.js"></script>
+
+
+
+    <script defer src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <script defer src="./script.js"></script>
 </body>
 </html>

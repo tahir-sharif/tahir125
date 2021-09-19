@@ -69,7 +69,7 @@ if(userName.value!='' && signUpEmail.value!='' && signUpPass.value!=''){
 }
 
 auth.onAuthStateChanged((user)=>{
-    // document.querySelector('.loader').style.display = 'none'
+    document.querySelector('.loader').style.display = 'none'
     if(user){
         var userId = auth.currentUser.uid;
 
@@ -248,6 +248,9 @@ function level6() {
 
         var rndmNm = Math.ceil(Math.random() * c.length)
         var b = c[rndmNm]
+        if(b.id == color){
+            currentColor = currentColor - 1;
+        }
 
         var blColor = generateColor();
         b.classList.remove('poppedBalloon');
@@ -267,18 +270,13 @@ function level7() {
     mnBalloons(31 , 7);
 }
 // level7();
-function level7() {
-    currentLevel = 7
-    lvlTxt.innerHTML = 'Level 7'
-    mnBalloons(32 , 5);
-}
-level7()
 function level8() {
     currentLevel = 7
-    lvlTxt.innerHTML = 'Level 7'
+    lvlTxt.innerHTML = 'Level 8'
     mnBalloons(32 , 5);
 }
-level8()
+
+
 // show color on page and run generate ballon funcion
 function mnBalloons(bllnsQnty , margin) {
     currentColor = 0

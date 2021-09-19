@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="./style.css">
+    <title>Pop the Ballon Game</title>
+</head>
+<body>
+
+    <div class="container">
+
+        <div class="loader">
+            <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+        </div>
+        
+        <div class="inputForm" style="display: none;">
+            <h2 class="formHeding">Login</h2>
+            <div class="errMsg">&nbsp;</div>
+            <div class="loginForm formDiv">
+                <input type="email" class="email" placeholder="Email address" spellcheck="false" >
+                <input type="password" class="password" placeholder="Password" spellcheck="false" >
+                <div class="btn loginBtn" onclick="login()">Login</div>
+                <div class="acntTxt" onclick="showRegForm()">Don't have an account</div>
+            </div>
+            <div class="regForm formDiv" style="display: none;">
+                <!-- <h2>Registor</h2> -->
+                <input type="text" class="name" placeholder="Your name" spellcheck="false" >
+                <input type="email" class="regEmail" placeholder="Email address" spellcheck="false" >
+                <input type="password" class="regPass" placeholder="Password" spellcheck="false" >
+                <div class="btn signupBtn" onclick="signup()">Signup</div>
+                <div class="acntTxt" onclick="showLoginForm()">Already have an account</div>
+            </div>
+        </div>
+
+        <div class="mnPage" style="display: none;">
+            <h1 class="wlcome">Welcome</h1>
+            <div class="gameContainer">
+                <div class="balloonsContainer">
+                    <h1 class="lives">Lives : 3</h1>
+                    <div><h2 class="lvl">Level 1</h2></div>
+                    <h1 class="popClrBln" ></h1>
+                    <div class="mnBalloons">
+                        <div class="balloon black" id="black" onmouseover="blns(this.id , event)"><span></span></div>
+                        <div class="balloon blue" id="blue" onmouseover="blns(this.id , event)"><span></span></div>
+                        <div class="balloon red"  id="red" onmouseover="blns(this.id , event)"><span></span></div>
+                        <div class="balloon yellow" id="yellow" onmouseover="blns(this.id , event)"><span></span></div>
+                        <div class="balloon green" id="green" onmouseover="blns(this.id , event)"><span></span></div>
+                        
+                    </div>
+                    <div class="ntHover" style="display: none;"></div>
+                    <div class="gamePopUp" style="display: none; text-align: center;">
+                        <div class="gameOver">
+                            <h2>Game Over </h2>
+                            <div class="btn gmPopBtn" onclick="playAgain()">Try again</div>
+                        </div>
+                        <div class="gameWin">
+                            <h2>You Win</h2>
+                            <div class="btn gmPopBtn" onclick="changeLevel()">Next Level</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+    <script defer src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <script defer src="./script.js"></script>
+</body>
+</html>
